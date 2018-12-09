@@ -1,5 +1,6 @@
 ﻿using Checkout.API.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using System.Threading.Tasks;
 
 namespace Checkout.API.Controllers
@@ -12,14 +13,14 @@ namespace Checkout.API.Controllers
 
         public OrderController(IOrderRepository orderRepository)
         {
-            _orderRepository = orderRepository;
+            _orderRepository = orderRepository;            
         }
 
-        //[Route("/api/order/add")]
-        //[HttpPost]
-        //public async Task OrderAdd()
-        //{
-        //    await _orderRepository.AddToOrder();
-        //}
+        [Route("/api/order/additem")]
+        [HttpPost]
+        public async Task OrderAddItem(string item)
+        {
+            await _orderRepository.AddItem(null, item);
+        }
     }
 }
