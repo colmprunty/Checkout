@@ -19,7 +19,7 @@ namespace Checkout.API.Controllers
 
         [Route("/api/order/additem")]
         [HttpPost]
-        public async Task<Order> OrderAddItem(Guid? orderId, OrderItem item)
+        public async Task<Order> OrderAddItem(Guid? orderId, [FromBody]OrderItem item)
         {
             return await _orderRepository.AddItem(orderId, item);
         }
