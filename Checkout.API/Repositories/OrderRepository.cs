@@ -50,5 +50,14 @@ namespace Checkout.API.Repositories
 
             return order;
         }
+
+        public async Task<Order> UpdateQuantity(Guid orderId, Guid itemId, int quantity)
+        {
+            var order = await Task.Run(() => _inMemoryOrders.Single(x => x.OrderId == orderId));
+            var item = order.Items.Single(x => x.ItemId == itemId);
+            item.Quantity = quantity;
+
+            return order;
+        }
     }
 }

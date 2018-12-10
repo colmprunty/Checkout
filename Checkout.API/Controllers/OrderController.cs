@@ -38,7 +38,11 @@ namespace Checkout.API.Controllers
             return await _orderRepository.ClearOrder(orderId);
         }
 
-        // update
-        // clear
+        [Route("/api/order/itemupdatequantity")]
+        [HttpPut]
+        public async Task<Order> OrderItemUpdateQuantity(Guid orderId, Guid itemId, int quantity)
+        {
+            return await _orderRepository.UpdateQuantity(orderId, itemId, quantity);
+        }
     }
 }

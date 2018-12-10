@@ -91,5 +91,14 @@ namespace Checkout.API.Tests.Stubs
 
             return Task.FromResult(order);
         }
+
+        public Task<Order> UpdateQuantity(Guid orderId, Guid itemId, int quantity)
+        {
+            var order = _orders.Single(x => x.OrderId == orderId);
+            var item = order.Items.Single(x => x.ItemId == itemId);
+            item.Quantity = quantity;
+
+            return Task.FromResult(order);
+        }
     }
 }

@@ -11,5 +11,6 @@ namespace Checkout.API.Repositories
         Task<Order> AddItem(Guid? orderId, OrderItem item);
         Task<Order> RemoveItem(Guid orderId, Guid itemId);
         Task<Order> ClearOrder(Guid orderId);
+        Task<Order> UpdateQuantity(Guid orderId, Guid itemId, int quantity);
     }
 }

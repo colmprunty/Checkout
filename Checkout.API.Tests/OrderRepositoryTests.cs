@@ -77,5 +77,21 @@ namespace Checkout.API.Tests
             // then
             Assert.Equal(0, cleanOrder.Items.Count);
         }
+
+        [Fact]
+        public async Task UpdateQuantity_should_update_quantity()
+        {
+            // given
+            var orderRepository = new OrderRepository();
+            var product = new Product { Name = "Saxophone " };
+            var item = new OrderItem { Product = product, Quantity = 1 };
+            var order = await orderRepository.AddItem(null, item);
+
+            // when
+            var updatedOrder = await orderRepository.UpdateQuantity(order.OrderId, item.ItemId, 3);
+
+            // then
+            Assert.Equal(3, updatedOrder.Items.Single(x => x.ItemId == item.ItemId).Quantity);
+        }
     }
 }

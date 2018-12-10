@@ -86,6 +86,19 @@ namespace Checkout.API.Tests
             // then
             Assert.Empty(order.Items);
         }
+
+        [Fact]
+        public async Task OrderItemUpdateQuantity_should_update_item_quantity()
+        {
+            // given
+            var orderId = new Guid("ac46275c-c2a6-426e-8128-153f9ae5eda8");
+            var itemId = new Guid("4d2fb458-e349-4495-bd51-f026501b1eba");
+
+            // when
+            var order = await _orderController.OrderItemUpdateQuantity(orderId, itemId, 400);
+
+            // then
+            Assert.Equal(400, order.Items.Single(x => x.ItemId == itemId).Quantity);
+        }
     }
 }
-
