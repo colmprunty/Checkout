@@ -14,10 +14,13 @@ namespace Checkout.API.Repositories
         {
             var order = _inMemoryOrders.SingleOrDefault(x => x.OrderId == orderId);
             if (order == null)
+            {
                 order = new Order();
+                await Task.Run(() => _inMemoryOrders.Add(order));
+            }
 
             await Task.Run(() => order.Items.Add(item));
-            await Task.Run(() => _inMemoryOrders.Add(order));
+            
             return order;
         }
 
@@ -36,6 +39,14 @@ namespace Checkout.API.Repositories
             var order = await Task.Run(() => _inMemoryOrders.Single(x => x.OrderId == orderId));
             var itemToRemove = order.Items.Single(x => x.ItemId == itemId);
             order.Items.Remove(itemToRemove);
+
+            return order;
+        }
+
+        public async Task<Order> ClearOrder(Guid orderId)
+        {
+            var order = await Task.Run(() => _inMemoryOrders.Single(x => x.OrderId == orderId));
+            order.Items.Clear();
 
             return order;
         }

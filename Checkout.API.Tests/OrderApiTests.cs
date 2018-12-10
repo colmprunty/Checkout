@@ -73,6 +73,19 @@ namespace Checkout.API.Tests
             // then
             Assert.Null(order.Items.SingleOrDefault(x => x.ItemId == itemId));
         }
+
+        [Fact]
+        public async Task OrderClear_should_remove_all_items_from_order()
+        {
+            // given
+            var orderId = new Guid("ac46275c-c2a6-426e-8128-153f9ae5eda8");
+
+            // when
+            var order = await _orderController.OrderClear(orderId);
+
+            // then
+            Assert.Empty(order.Items);
+        }
     }
 }
 

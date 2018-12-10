@@ -31,7 +31,13 @@ namespace Checkout.API.Controllers
             return await _orderRepository.RemoveItem(orderId, itemId);
         }
 
-        
+        [Route("/api/order/removeitem")]
+        [HttpDelete]
+        public async Task<Order> OrderClear(Guid orderId)
+        {
+            return await _orderRepository.ClearOrder(orderId);
+        }
+
         // update
         // clear
     }

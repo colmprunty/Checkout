@@ -29,6 +29,15 @@ namespace Checkout.API.Tests.Stubs
                             Name = "A rock I found"
                         },
                         Quantity = 18
+                    },
+                    new OrderItem
+                    {
+                        ItemId = new Guid("cb8921f8-4968-4d34-ba62-71c7f93cb737"),
+                        Product = new Product
+                        {
+                            Name = "Big TV"
+                        },
+                        Quantity = 2
                     }
                 }
             }
@@ -48,7 +57,7 @@ namespace Checkout.API.Tests.Stubs
             }
             else
             {
-                order = _orders.SingleOrDefault(x => x.OrderId == orderId);
+                order = _orders.Single(x => x.OrderId == orderId);
                 order.Items.Add(item);
             }
 
@@ -58,6 +67,14 @@ namespace Checkout.API.Tests.Stubs
         public Task AddOrder(Order order)
         {
             _orders.Add(order);
+            return Task.FromResult(order);
+        }
+
+        public Task<Order> ClearOrder(Guid orderId)
+        {
+            var order = _orders.Single(x => x.OrderId == orderId);
+            order.Items.Clear();
+
             return Task.FromResult(order);
         }
 

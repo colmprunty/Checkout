@@ -58,5 +58,24 @@ namespace Checkout.API.Tests
             // then
             Assert.Null(orderAfterRemoving.Items.SingleOrDefault(x => x.ItemId == item.ItemId));
         }
+
+        [Fact]
+        public async Task ClearOrder_should_remove_all_items()
+        {
+            // given
+            var orderRepository = new OrderRepository();
+            var product = new Product { Name = "Shoe" };
+            var item = new OrderItem { Product = product, Quantity = 2 };
+            var product2 = new Product { Name = "Hat" };
+            var item2 = new OrderItem { Product = product2, Quantity = 1 };
+            var order = await orderRepository.AddItem(null, item);
+            await orderRepository.AddItem(order.OrderId, item2);
+
+            // when
+            var cleanOrder = await orderRepository.ClearOrder(order.OrderId);
+
+            // then
+            Assert.Equal(0, cleanOrder.Items.Count);
+        }
     }
 }
