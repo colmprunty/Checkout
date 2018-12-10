@@ -4,6 +4,8 @@ WORKDIR /app
 # copy csproj and restore as distinct layers
 COPY Checkout.API.csproj ./
 RUN dotnet restore
+COPY Resources.csproj ./
+RUN dotnet restore
  
 # copy everything else and build
 COPY . .
