@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Checkout.API.Models
+namespace Checkout.Resources.Models
 {
     public class Order
     {

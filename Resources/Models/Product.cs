@@ -1,4 +1,4 @@
-﻿namespace Checkout.API.Models
+﻿namespace Checkout.Resources.Models
 {
     public class Product
     {

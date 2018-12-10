@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Checkout.API\Checkout.API.csproj" />
+    <ProjectReference Include="..\Resources\Resources.csproj" />
   </ItemGroup>
 
 </Project>

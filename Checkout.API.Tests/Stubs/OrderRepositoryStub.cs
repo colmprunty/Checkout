@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Checkout.API.Models;
 using Checkout.API.Repositories;
+using Checkout.Resources.Models;
 
 namespace Checkout.API.Tests.Stubs
 {

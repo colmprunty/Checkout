@@ -1,5 +1,5 @@
-﻿using Checkout.API.Models;
-using Checkout.API.Repositories;
+﻿using Checkout.API.Repositories;
+using Checkout.Resources.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Checkout.API.Models
+namespace Checkout.Resources.Models
 {
     public class OrderItem
     {

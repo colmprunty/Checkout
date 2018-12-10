@@ -1,4 +1,4 @@
-﻿using Checkout.API.Models;
+﻿using Checkout.Resources.Models;
 using System;
 using System.Threading.Tasks;
 

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Checkout.Resources.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Checkout.API.Models;
 
 namespace Checkout.API.Repositories
 {

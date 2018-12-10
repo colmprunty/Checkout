@@ -1,7 +1,7 @@
 ﻿using Checkout.API.Controllers;
-using Checkout.API.Models;
 using Checkout.API.Repositories;
 using Checkout.API.Tests.Stubs;
+using Checkout.Resources.Models;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
