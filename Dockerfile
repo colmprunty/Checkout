@@ -2,9 +2,9 @@ FROM microsoft/dotnet:2.2-sdk AS build-env
 WORKDIR /app
  
 # copy csproj and restore as distinct layers
-COPY Checkout.API.csproj ./
+COPY Checkout.API/Checkout.API.csproj ./
 RUN dotnet restore
-COPY Resources.csproj ./
+COPY Resources/Resources.csproj ./
 RUN dotnet restore
  
 # copy everything else and build
