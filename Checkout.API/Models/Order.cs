@@ -7,10 +7,11 @@ namespace Checkout.API.Models
     {
         public Order()
         {
-            Items = new List<string>();
+            Items = new List<OrderItem>();
+            OrderId = Guid.NewGuid();
         }
 
         public Guid OrderId { get; set; }
-        public IList<string> Items { get; set; }
+        public IList<OrderItem> Items { get; set; }
     }
 }

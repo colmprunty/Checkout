@@ -1,6 +1,7 @@
-﻿using Checkout.API.Repositories;
+﻿using Checkout.API.Models;
+using Checkout.API.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
+using System;
 using System.Threading.Tasks;
 
 namespace Checkout.API.Controllers
@@ -18,9 +19,20 @@ namespace Checkout.API.Controllers
 
         [Route("/api/order/additem")]
         [HttpPost]
-        public async Task OrderAddItem(string item)
+        public async Task<Order> OrderAddItem(Guid? orderId, OrderItem item)
         {
-            await _orderRepository.AddItem(null, item);
+            return await _orderRepository.AddItem(orderId, item);
         }
+
+        [Route("/api/order/removeitem")]
+        [HttpDelete]
+        public async Task<Order> OrderRemoveItem(Guid orderId, Guid itemId)
+        {
+            return await _orderRepository.RemoveItem(orderId, itemId);
+        }
+
+        
+        // update
+        // clear
     }
 }

@@ -6,8 +6,9 @@ namespace Checkout.API.Repositories
 {
     public interface IOrderRepository
     {
-        Task<Order> GetOrder(Guid? orderId);
+        Task<Order> GetOrder(Guid orderId);
         Task AddOrder(Order order);
-        Task<Order> AddItem(Guid? orderId, string item);
+        Task<Order> AddItem(Guid? orderId, OrderItem item);
+        Task<Order> RemoveItem(Guid orderId, Guid itemId);
     }
 }
