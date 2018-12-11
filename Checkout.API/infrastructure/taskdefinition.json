@@ -1,0 +1,15 @@
+[
+  {
+    "name": "checkout",
+    "image": "{amazon-account-id}.dkr.ecr.{region}.amazonaws.com/checkout",
+    "cpu": 25,
+    "memory": 25,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 80
+      }
+    ]
+  }
+]
+  
